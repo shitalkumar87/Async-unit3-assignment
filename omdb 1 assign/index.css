@@ -1,0 +1,46 @@
+ *{
+    background-color: teal;
+ }
+
+input[type="text"]{
+    width: 92%;
+    padding: 12px;
+    border: 1px solid gold;
+    border-radius: 6px;
+   margin-bottom: 16px;
+   font-size: 20px;
+   color: white;
+}
+
+button{
+    width: 100%;
+    padding: 12px 20px;
+    background-color: red;
+    border-radius: 6px;
+    border: none;
+}
+
+#query{
+       
+      /* border: 1px solid black; */
+      height: 100px;
+      width: 300px;
+      margin: auto;
+      margin-top: 100px;
+}
+
+#box{
+    height: 300px;
+    width: 300px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 50px;
+    overflow: scroll;
+    border: none;
+    color: white;
+}
+
+img{
+    height: 250px;
+    width: 300px;
+}
