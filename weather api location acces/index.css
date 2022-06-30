@@ -1,0 +1,89 @@
+.mapoute
+{position:relative;
+    text-align:right;
+    height:300px;
+    width:300px;
+    border: 1px solid black;
+}
+.gmap_canvas {
+     
+    overflow:hidden;
+    background:none!important;
+    height:400px;
+    width:400px;
+    /* border: 1px solid black; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: -320px;
+    margin-left: 460px;
+     
+}
+
+    #box{
+        height: 100px;
+        width: 500px;
+        /* border: 1px solid black; */
+        margin: auto;
+        margin-top: -190px;
+        
+    }
+
+    input[type="text"]{
+        width: 95%;
+        padding: 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        font-size: 20px;
+        color: white;
+    }
+
+    button{
+
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        background-color: gold;
+        border-radius: 5px;
+    }
+
+    #container{
+          margin-left: auto;
+          /* border: 1px solid black; */
+          height: 320px;
+          width: 200px;
+          margin-top: 50px;
+          text-align: center;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+           color: white;
+    }
+
+    #sun1{
+        
+        height: 100px;
+        width: 100px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        
+      }  
+      #sun2{
+        
+        height: 100px;
+        width: 100px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+       
+      } 
+      img{
+          height: 100px;
+          width: 100%;
+          clip-path: circle(50px);
+      }
+ 
+      img+img1{
+          height: 100px;
+          width: 100%;
+          clip-path: circle(50px);
+      }
+
+      *{
+        background-color: teal;
+      }
