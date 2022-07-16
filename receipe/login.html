@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/signin.css">
+</head>
+<body>
+      <div id="navbar"></div>
+      
+      <div id="login">
+        <h1>Login</h1>
+         <form id="form"> 
+        <input type="text" id="login-username" placeholder="Username"/>
+        <input type="text" id="login-pwd" placeholder="password">
+       </form>
+    
+     <button id="button" >Login</button>
+
+    </div>
+</body>
+</html>
+<script type="module">
+     import {navbar,topbar} from "../component/navbar.js";
+
+document.getElementById("navbar").innerHTML=topbar()
+ 
+document.getElementById("button").addEventListener("click",function(){
+
+      Login()
+})
+
+async function Login(){
+    let store=JSON.parse(localStorage.getItem("storedata"))||[]
+  let name=document.getElementById("login-username").value
+   store.push(name)
+   localStorage.setItem("storedata",JSON.stringify(store))
+let login_data={
+
+     username:document.getElementById("login-username").value,
+     password:document.getElementById("login-pwd").value
+}
+
+login_data=JSON.stringify(login_data)
+
+let login_api_link="https://masai-api-mocker.herokuapp.com/auth/login";
+
+let res=await fetch(login_api_link,{
+
+    method:"POST",
+
+    body:login_data,
+
+    headers:
+    {
+        'Content-Type':'application/json',
+    },
+});
+
+let data=await res.json()
+
+  if(data.error===false){
+    window.location.href="randomsearch.html"
+    alert("login successfull")
+  }
+
+   else if(data.error===true){
+    window.location.href="randomsearch.html"
+   }
+}
+
+</script>

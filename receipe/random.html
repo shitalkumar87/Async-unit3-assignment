@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+<body>
+      <div id="navbar"></div>
+
+      <div id="box"></div>
+      <div id="random"></div>
+</body>
+</html>
+<script type="module">
+
+import {navbar,topbar}from "../component/navbar.js";
+
+document.getElementById("navbar").innerHTML=topbar()
+
+import{getdata,append} from "./script/random.js"
+
+let url="https://www.themealdb.com/api/json/v1/1/random.php";
+let data=await getdata(url);
+console.log(data)
+let cont=document.getElementById("random")
+let box=document.getElementById("box")
+
+append(data,cont,box)
+let store=JSON.parse(localStorage.getItem("storedata"))
+        
+        document.getElementById("login").innerText=store[store.length-1]
+ 
+</script>

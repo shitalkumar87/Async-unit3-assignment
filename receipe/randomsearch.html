@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipe by name</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <style>
+         
+    </style>
+</head>
+<body>
+       <div id="navbar"></div>
+     
+        <div id="bag">
+            <input  id="receipe" type="text" placeholder="Search Receipe">
+        </div>
+      
+       <div id="container"></div>
+      
+</body>
+</html>
+
+<script  type="module">
+          import { main,getdata}from "./script/search.js"
+          import {navbar,topbar} from "../component/navbar.js";
+
+document.getElementById("navbar").innerHTML=topbar()
+    // import navbar from "./navbar/navbar.js"
+    //     document.getElementById("navbar").innerHTML=navbar();
+ 
+        // import {getdata,append} from "./navbar/searchrecp.js";
+
+        document.getElementById("receipe").oninput=main
+        
+        let store=JSON.parse(localStorage.getItem("storedata"))
+        
+        document.getElementById("login").innerText=store[store.length-1]
+
+</script>

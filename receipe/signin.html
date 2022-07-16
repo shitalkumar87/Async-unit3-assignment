@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/signin.css">
+    <style>
+         #counter{
+            display: flex;
+        }
+
+        form{
+            width: 10%;
+        }
+        input{
+            margin-top: 5%;
+        }
+        
+    </style>
+</head>
+<body>
+      <div id="navbar"></div>
+
+      <h1>Flipkart Inventory System</h1>
+        
+      <div id="signup"> 
+      <form id="farm"> 
+         <input type="text" id="name" placeholder="name">
+         <input type="text" id="email" placeholder="Email">
+         <input type="text" id="password" placeholder="Password">
+         <input type="text" id="username" placeholder="Username">
+         <input type="text" id="mobile" placeholder="Mobile">
+         <input type="text" id="description" placeholder="Description">
+      </form>
+       <button id="button" >Signup</button>
+  </div>
+</body>
+</html>
+<script type="module">
+     import {navbar,topbar} from "../component/navbar.js";
+
+document.getElementById("navbar").innerHTML=navbar()
+ 
+document.getElementById("button").addEventListener("click",function(){
+
+    Register()
+})
+   
+
+async function Register(){
+
+let  signup_data = 
+{ 
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
+    username: document.getElementById("username").value,
+    mobile: document.getElementById("mobile").value,
+    description: document.getElementById("description").value,
+     
+}
+
+ signup_data = JSON.stringify(signup_data);
+
+let signup_api_link='https://masai-api-mocker.herokuapp.com/auth/register'
+
+let res = await fetch(signup_api_link,{
+
+    method:'POST',
+
+    body:signup_data,
+
+    headers:
+    {
+        'Content-Type':'application/json'
+    },
+})
+
+let data=await res.json()
+console.log("data",data)
+if(data.error===false){
+
+window.location.href="login.html"
+alert("signup successfull")
+}
+else{
+    alert("username already exist")
+}
+}
+ 
+
+</script>

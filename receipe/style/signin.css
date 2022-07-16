@@ -1,0 +1,84 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    padding: 10px ;
+    background-color:rgb(36, 191, 211);
+    color: white;
+}
+
+.options{
+   display: flex;
+   gap: 20px;
+   background-color:rgb(36, 191, 211);
+     
+
+}
+a{
+    color: white;
+}
+
+/* #container{
+    display: grid;
+    grid-template-columns: repeat(4,20%);
+    grid-gap: 5%;
+} */
+
+img{
+    height: 250px;
+    width: 250px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 30px;
+}
+#bag{
+    text-align: center;
+}
+
+input[type="text"],[type="email"],[type="number"],[type="password"]{
+    width: 95%;
+    margin-top: 30px;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 4px;
+     color: white;
+     text-align: center;
+
+}
+
+ 
+ 
+*{
+    background-color: black;
+}
+
+#signup{
+    border: 1px solid black;
+     text-align: center;
+}
+ 
+#farm{
+    text-align: center;
+    width: 95%;
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+     margin: auto;
+}
+#button{
+    padding: 12px;
+     width: 37%;
+    color: white;
+     
+
+    }
+
+ #form{
+    text-align: center;
+    height: 200px;
+    width: 500px;
+    border: 1px solid black;
+     margin: auto;
+ }
+ #login{
+    text-align: center;
+ }
