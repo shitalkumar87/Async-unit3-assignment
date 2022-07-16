@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #container{
+            display: grid;
+            grid-template-columns: repeat(3,28%);
+            grid-gap: 6%;
+             
+        }
+        img{
+            height: 250px;
+            width: 250px;
+             
+        }
+        #box{
+            height: 400px;
+            width: 350px;
+            border: 1px solid black;
+            text-align: center;
+            margin-top: 10px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+          <h3><a href="./productdisplay.html">PRODUCT DISPALY PAGE</a></h3>
+          <div id="container"></div>
+
+</body> 
+</html>
+<script>
+
+           let data =JSON.parse(localStorage.getItem("productcart"))
+
+              
+           
+           let append= (data)=>{
+              
+              let cont=document.getElementById("container")
+               
+                data.forEach((el,index)=>{
+                   
+                  let  div=document.createElement("div")
+                    div.id="box"
+                  let img=document.createElement("img")
+                  img.src=el.url
+                 
+                  let Id=document.createElement("p")
+                   Id.innerText=el.id
+                  
+                   let Name=document.createElement("h4")
+                   Name.innerText=el.name
+  
+                   let amount=document.createElement("p")
+                   amount.innerText=el.price
+  
+                   let btn=document.createElement("button")
+                   btn.innerText="Remove"
+                   btn.addEventListener("click",function(){
+                      remove(index)
+                      window.location.reload()
+                   })
+  
+                 div.append(img,Id,Name,amount,btn)
+                 cont.append(div)
+                })
+  
+             }
+             
+              append(data)
+
+    function remove(index){
+
+        let data =JSON.parse(localStorage.getItem("productcart"))||[]
+
+
+        let newdata=data.filter(function(el,i){
+
+            if(i===index){
+
+                let trash=JSON.parse(localStorage.getItem("trash"))||[]
+
+                trash.push(el)
+
+                localStorage.setItem("trash",JSON.stringify(trash))
+            }
+            else{
+                return i!=index
+            }
+        })
+         localStorage.setItem("productcart",JSON.stringify(newdata))
+    }
+
+</script>

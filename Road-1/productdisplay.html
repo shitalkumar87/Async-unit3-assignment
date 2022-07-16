@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,28%);
+            grid-gap: 6%;
+             
+        }
+        img{
+            height: 250px;
+            width: 250px;
+             
+        }
+        #box{
+            height: 400px;
+            width: 350px;
+            border: 1px solid black;
+            text-align: center;
+            margin-top: 10px;
+            background-color: black;
+            color: white;
+        }
+        h1{
+                 text-align: center;
+                 font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h3><a href="./addtocart.html">Add to Cart</a></h3>
+    <h1>Product Dispaly </h1>
+        <div id="container"></div>
+</body>
+</html>
+<script>
+        
+        let getdata=async()=>{
+
+            let url='http://localhost:4007/api/products'
+
+            let res=await fetch(url)
+
+            let data=await res.json()
+
+            append(data)
+        }
+     getdata()
+
+           let append= (data)=>{
+              
+            let cont=document.getElementById("container")
+             
+              data.forEach((el)=>{
+                 
+                let  div=document.createElement("div")
+                  div.id="box"
+                let img=document.createElement("img")
+                img.src=el.url
+               
+                let Id=document.createElement("p")
+                 Id.innerText=el.id
+                
+                 let Name=document.createElement("h4")
+                 Name.innerText=el.name
+
+                 let amount=document.createElement("p")
+                 amount.innerText=el.price
+
+                 let btn=document.createElement("button")
+                 btn.innerText="Add To Cart"
+                 btn.addEventListener("click",function(){
+                    addtocart(el)
+                    window.location.reload()
+                 })
+
+               div.append(img,Id,Name,amount,btn)
+               cont.append(div)
+              })
+
+           }
+          let data=JSON.parse(localStorage.getItem("productcart"))||[]
+           function addtocart(el){
+              
+             data.push(el)
+             localStorage.setItem("productcart",JSON.stringify(data))
+           }
+         console.log(data)
+</script>

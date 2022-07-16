@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> 
+        <h1>Add Product</h1>
+       <input type="text" id="id" placeholder="id">
+       <input type="url" id="url" placeholder="url">
+       <input type="text" id="name" placeholder="Name">
+       <input type="text" id="price" placeholder="Price">
+       <button onclick="addproduct()">Add</button>
+    </div>
+     <div>
+        <input type="text" id="delete">
+        <button onclick="deleteproduct()">Delete</button>
+     </div>
+
+     <div>
+        <input type="text" id="changeid" placeholder="id">
+         <input type="text" id="pricechange" placeholder="pricechange">
+         <input type="text" id="namechange" placeholder="Namechange">
+         
+          
+         <button onclick="patch()">Patch</button>
+     </div>
+        
+</body>
+</html>
+<script>
+    // 1. ADD PRODUCT 
+      function getinputvalue(id){
+
+        return document.getElementById(id).value
+      }
+
+        let  addproduct= async ()=>{
+            let product={
+         id: getinputvalue("id"),
+         url:getinputvalue("url"),
+         name:getinputvalue("name"),
+         price:getinputvalue("price")
+         }
+
+         product =JSON.stringify(product)
+
+         product_api_link='http://localhost:4007/api/products'
+
+         let res=await fetch(product_api_link,{
+
+            method:"POST",
+     
+           body:product,
+           
+           headers:{
+            "Content-Type":"application/json"
+           }
+
+           
+            
+         })
+
+         let data=await res.json()
+
+         console.log(data)
+        }
+        // 2. Delete product
+
+    let deleteproduct=async()=>{
+
+let id=document.getElementById("delete").value
+
+let response=await fetch(`http://localhost:4007/api/products/${id}`,{
+
+ method:"DELETE",
+  
+ headers:{
+     'Content-Type':'application/json'
+ }
+
+})
+
+let data=await response.json()
+}
+
+ let patch=async()=>{
+    
+        let id=document.getElementById("changeid").value,
+           name=document.getElementById("namechange").value,
+          price=document.getElementById("pricechange").value
+           
+    
+     let response=await fetch(`http://localhost:4007/api/products/${id}`,{
+        
+        method:"PATCH",
+
+        body:JSON.stringify({
+        name:`${name}`,
+        price:`${price}`,
+         
+
+         
+        }),
+
+        headers:{
+                 'Content-Type':'application/json'
+                }
+     })
+
+      let data =await response.json()
+      console.log(data)
+ }
+
+</script>
